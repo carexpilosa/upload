@@ -21152,9 +21152,15 @@ var Uploader = function (_Component) {
       console.log('sendReq');
       var myRequest = new XMLHttpRequest();
       myRequest.open('POST', this.props.action, true);
+      var that = this;
       myRequest.onload = function () {
         if (myRequest.status === 200) {
           alert(myRequest.responseText);
+          that.setState({
+            liste: [],
+            formData: null
+          });
+          console.log(that.state);
         }
       };
       myRequest.send(this.state.formData);
@@ -21163,7 +21169,6 @@ var Uploader = function (_Component) {
     key: 'do',
     value: function _do(event) {
       var files = document.getElementById('tmpfiles').files;
-      //console.log(files);
       var myForm = document.getElementById('myForm');
       var formData = this.state.formData || new FormData(myForm);
       var liste = this.state.liste;

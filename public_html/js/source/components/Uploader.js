@@ -32,22 +32,27 @@ class Uploader extends Component {
       </div>
     );
   }
-  
+
   sendReq() {
     console.log('sendReq');
     var myRequest = new XMLHttpRequest();
     myRequest.open('POST', this.props.action, true);
+    let that = this;
     myRequest.onload = function() {
       if (myRequest.status === 200) {
         alert(myRequest.responseText);
+        that.setState({
+          liste: [],
+          formData: null
+        });
+        console.log(that.state);
       }
     };
     myRequest.send(this.state.formData);
   }
-  
+
   do(event) {
     let files = document.getElementById('tmpfiles').files;
-    //console.log(files);
     let myForm = document.getElementById('myForm');
     let formData = this.state.formData || new FormData(myForm);
     let liste = this.state.liste;
