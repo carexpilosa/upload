@@ -15,19 +15,17 @@ my @handles = $cgi->multi_param('filelist');
 
 warn scalar @handles;
 
-for my $fh (@handles) {
+foreach my $fh (@handles) {
   warn "$fh<br>";
   print "$fh<br>";
-  
-  
-  #my $dir = './upload/';
-  #open (my $out.. '>', "$dir/$fh" )...
-  #while(<$fh>) {
-  #  print $out $_;
-  #}
+
+
+  my $dir = '/home/hugo/NetBeansProjects/uploader/upload/';
+  open (my $out, '>', "$dir$fh" ) || die "$! - cannot open file $dir$fh";
+  warn "opened $dir$fh for writing ...";
+  while(<$fh>) {
+    print $out $_;
+  }
 }
-
-
-
 
 1;
