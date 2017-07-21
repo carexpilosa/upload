@@ -18,6 +18,8 @@ warn scalar @handles;
 for my $fh (@handles) {
   warn "$fh<br>";
   print "$fh<br>";
+  
+  
   #my $dir = './upload/';
   #open (my $out.. '>', "$dir/$fh" )...
   #while(<$fh>) {
