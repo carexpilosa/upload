@@ -1,1 +1,1 @@
-An multi uploader react Component
+A multi uploader react component
