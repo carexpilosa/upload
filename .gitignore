@@ -2,6 +2,7 @@
 ./upload/*
 
 # more
-./public_html/build/*
-./node_modules
-./Gruntfile.js
+public_html/build/*
+node_modules
+Gruntfile.js
+upload
