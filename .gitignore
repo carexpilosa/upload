@@ -1,8 +1,8 @@
 # uploaded files:
-./upload/*
 
 # more
-public_html/build/*
-node_modules
-Gruntfile.js
-upload
+/public_html/build/*
+/node_modules
+/Gruntfile.js
+/upload
+/nbproject/private/
