@@ -58,10 +58,10 @@ class Uploader extends Component {
   }
 
   do(event) {
-    let files = document.getElementById('tmpfiles').files;
-    let myForm = document.getElementById('myForm');
-    let formData = this.state.formData || new FormData(myForm);
-    let liste = this.state.liste;
+    let files = document.getElementById('tmpfiles').files,
+        myForm = document.getElementById('myForm'),
+        formData = this.state.formData || new FormData(myForm),
+        liste = this.state.liste;
     for (let i = 0; i < files.length; i++) {
       formData.append('filelist', files[i]);
       liste.push(files[i]);

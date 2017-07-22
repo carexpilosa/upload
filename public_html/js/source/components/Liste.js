@@ -11,7 +11,7 @@ class Liste extends Component {
       daten: props.daten,
       descending: false
     };
-    //this.do = this.do.bind(this);
+    this.headOnClick = this.headOnClick.bind(this);
   }
 
   render() {
@@ -21,7 +21,7 @@ class Liste extends Component {
           <tbody>
             <tr>{
               this.state.header.map(function (hdtext, idx) {
-                return <th onClick={this.headOnClick.bind(this)} key={idx}>{hdtext}</th>;
+                return <th onClick={this.headOnClick} key={idx}>{hdtext}</th>;
               }, this)
             }</tr>{
               this.state.daten.map(function (o_dat, o_idx) {
@@ -38,15 +38,14 @@ class Liste extends Component {
   }
 
   headOnClick() {
-    console.log('headOnClick');
     let daten = this.state.daten,
-        descending = this.state.descending;
+        descending = !this.state.descending;
     daten.sort(function (a, b) {
       return descending ? a < b : b < a;
     });
     this.setState({
       daten: daten,
-      descending: !descending
+      descending: descending
     });
   }
 }
