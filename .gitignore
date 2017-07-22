@@ -1,9 +1,12 @@
 # uploaded files:
 
 # more
-/public_html/build/*
 /node_modules
 /Gruntfile.js
 /upload
 /nbproject
+public_html/js/app.js
+public_html/js/build/components/Liste.js
+public_html/js/build/components/Uploader.js
+public_html/js/build/index.js
 
