@@ -49,6 +49,7 @@ var Uploader = function (_Component) {
           { method: 'post', encType: 'multipart/form-data', action: this.props.action,
             id: 'myForm' },
           'FORM UPLOAD',
+          _react2.default.createElement('br', null),
           _react2.default.createElement('input', { type: 'file', id: 'tmpfiles', name: 'tmpfiles',
             onChange: this.do.bind(this), multiple: true }),
           _react2.default.createElement(
@@ -87,6 +88,12 @@ var Uploader = function (_Component) {
           });
           console.log(that.state);
         }
+      };
+      myRequest.onprogress = function (e) {
+        console.log('-----------------------');
+        console.log(e);
+        console.log(e.loaded);
+        console.log(e.total);
       };
       myRequest.send(this.state.formData);
     }

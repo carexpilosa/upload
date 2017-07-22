@@ -18,7 +18,7 @@ class Uploader extends Component {
       <div>
         <form method="post" encType="multipart/form-data" action={this.props.action}
               id="myForm">
-          FORM UPLOAD
+          FORM UPLOAD<br/>
           <input type="file" id="tmpfiles" name="tmpfiles"
             onChange={this.do.bind(this)} multiple />
           <ul>{
@@ -47,6 +47,12 @@ class Uploader extends Component {
         });
         console.log(that.state);
       }
+    };
+    myRequest.onprogress = function(e) {
+      console.log('-----------------------');
+      console.log(e);
+      console.log(e.loaded);
+      console.log(e.total);
     };
     myRequest.send(this.state.formData);
   }
