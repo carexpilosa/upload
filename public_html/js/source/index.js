@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Uploader from './components/Uploader';
-import Liste from './components/Liste';
+import List from './components/List';
 
 
 ReactDOM.render(
@@ -12,7 +12,7 @@ ReactDOM.render(
     <br/>
     <br/>
     <br/>
-    <Liste />
+    <List />
   </span>,
   document.getElementById('app')
 );
