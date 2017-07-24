@@ -42,15 +42,10 @@ class List extends Component {
   }
 
   headOnClick(event) {
-    console.log('headOnClick');
     let daten = this.state.daten,
         descending = !this.state.descending,
         cellIndex = event.target.cellIndex,
         sortBy = this.state.sorting[cellIndex];
-    console.table(daten);
-    console.log('sortBy => ' + sortBy
-                + ', descending => ' + descending
-                + 'cellIndex => ' + cellIndex);
     if (sortBy === 'number') {
       daten.sort(function(a, b) {
         return descending ? (a[cellIndex] - b[cellIndex]) : (b[cellIndex] - a[cellIndex]);
@@ -61,7 +56,6 @@ class List extends Component {
         daten.reverse();
       }
     }
-    console.table(daten);
     this.setState({
       daten: daten,
       descending: descending
