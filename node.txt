@@ -1,4 +1,7 @@
 npm install --global browserify
+oder
+npm install --global webpack
+
 npm install --global babel-cli
 npm install --save-dev react
 npm install --save-dev react-dom
