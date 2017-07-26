@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Uploader from './components/Uploader';
 import List from './components/List';
+import Selector from './components/Selector';
 
 let header = ['Bundesland', 'Fläche in km²', 'Ew. insgesamt','Ew. männlich',
               'Ew. weiblich', 'Ew. je km²'],
@@ -34,7 +35,10 @@ ReactDOM.render(
     <br/>
     <br/>
     <br/>
-    <List header={header} sorting={sorting} daten={daten}/>
+    <List header={header} sorting={sorting} daten={daten} />
+    <br/>
+    <br/>
+    <Selector />
   </span>,
   document.getElementById('app')
 );
