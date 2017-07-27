@@ -2,6 +2,11 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import store from '../store';
+import * as Actions from '../actions';
+
+const action = changeSelectorFiltered1();
+store.dispatch(action);
 
 class Selector extends Component {
   constructor(props) {
@@ -58,20 +63,23 @@ class Selector extends Component {
   }
 
   onChangeFunc(e) {
-    let filtered = this.state.daten.Tiergruppen.filter(group => {
+    let filtered1 = this.state.daten.Tiergruppen.filter(group => {
       return e.target.value === group.name;
     });
-    if (filtered.length) {
-      //console.log('setState ...')
-      //console.log(filtered)
-      this.setState({filtered1: filtered});
-      this.state.filtered1.map(val => {
-        console.log(val);
-      });
+    if (filtered1.length) {
+      //this.setState({filtered1: filtered1});
+      updateSelectorFiltered(filtered1);
     } else {
-      this.setState({filtered1: []});
+      //this.setState({filtered1: []});
+      removeSelectorFiltered();
     }
   }
+}
+
+function mapStateToProps(state) {
+  return {
+    filtered1: state.filtered1
+  };
 }
 
 export default Selector;
