@@ -3,9 +3,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import store from '../store';
-import * as Actions from '../actions';
+import { updateSelectorFiltered1 } from '../actions';
 
-const action = changeSelectorFiltered1();
+const action = updateSelectorFiltered1([]);
 store.dispatch(action);
 
 class Selector extends Component {
@@ -68,10 +68,10 @@ class Selector extends Component {
     });
     if (filtered1.length) {
       //this.setState({filtered1: filtered1});
-      updateSelectorFiltered(filtered1);
+      updateSelectorFiltered1(filtered1);
     } else {
       //this.setState({filtered1: []});
-      removeSelectorFiltered();
+      //removeSelectorFiltered();
     }
   }
 }
