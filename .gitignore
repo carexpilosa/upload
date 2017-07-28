@@ -6,6 +6,6 @@
 /upload
 /nbproject
 public_html/js/app.js
+public_html/js/build/*.js
 public_html/js/build/components/*.js
-public_html/js/build/index.js
 
