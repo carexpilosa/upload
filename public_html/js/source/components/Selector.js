@@ -48,11 +48,11 @@ class Selector extends Component {
           })
         }</datalist>
           {
-            this.state.filtered1.length
+            store.getState().filtered1.length
               ? <span>
                    <input type="search" list="Filter1" />
                    <datalist id="Filter1">{
-                     this.state.filtered1[0].items.map((item,idx) => {
+                     store.getState().filtered1[0].items.map((item,idx) => {
                        console.log(item);
                        return <option key={idx} value={item} />;
                      })
@@ -70,7 +70,7 @@ class Selector extends Component {
     let filtered1 = this.state.daten.Tiergruppen.filter(group => {
       return e.target.value === group.name;
     });
-    console.log(filtered1);
+    console.log(store.getState());
     if (filtered1.length) {
       //this.setState({filtered1: filtered1});
       updateSelectorFiltered1(filtered1);
@@ -78,6 +78,7 @@ class Selector extends Component {
       //this.setState({filtered1: []});
       //removeSelectorFiltered();
     }
+    console.log(store.getState());
   }
 }
 
