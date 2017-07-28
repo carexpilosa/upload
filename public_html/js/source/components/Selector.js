@@ -32,7 +32,7 @@ class Selector extends Component {
           }
         ]
       },
-      filtered1: []
+      filtered1: props.filtered1 || []
     };
     this.state.filtered1 = props.filtered1;
     this.onChangeFunc = this.onChangeFunc.bind(this);
@@ -70,10 +70,11 @@ class Selector extends Component {
   onChangeFunc(e) {
     const { updateSelectorFiltered1 } = this.props;
     const { removeSelectorFiltered1 } = this.props;
+    console.log(this.props.filtered1);
     let filtered1 = this.state.daten.Tiergruppen.filter(group => {
       return e.target.value === group.name;
     });
-    //console.log(store.getState());
+    console.log(this.props.filtered1);
     if (filtered1.length) {
       //this.setState({filtered1: filtered1});
       updateSelectorFiltered1(filtered1);
