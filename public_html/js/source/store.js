@@ -1,15 +1,14 @@
 import {createStore, combineReducers} from 'redux';
 import {UPDATE_SELECTOR_FILTERED1, REMOVE_SELECTOR_FILTERED1} from './actions';
 
-export function changeSelectorFiltered1(state=null, action) {
+export function changeSelectorFiltered1(state=[], action) {
   switch (action.type) {
     case UPDATE_SELECTOR_FILTERED1:
-      //return action.filtered1;
-      return null;
+      return action.filtered1;
     case REMOVE_SELECTOR_FILTERED1:
-      return null;
+      return [];
     default:
-      return null;
+      return state;
   };
 }
 
