@@ -2,6 +2,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './store'
+
 import Uploader from './components/Uploader';
 import List from './components/List';
 import Selector from './components/Selector';
@@ -31,14 +34,18 @@ let header = ['Bundesland', 'Fläche in km²', 'Ew. insgesamt','Ew. männlich',
 
 ReactDOM.render(
   <span>
-    <Uploader />
-    <br/>
-    <br/>
-    <br/>
-    <List header={header} sorting={sorting} daten={daten} />
-    <br/>
-    <br/>
-    <Selector />
+    <Provider store={store}>
+      <div>
+        <Uploader />
+        <br/>
+        <br/>
+        <br/>
+        <List header={header} sorting={sorting} daten={daten} />
+        <br/>
+        <br/>
+        <Selector />
+      </div>
+    </Provider>
   </span>,
   document.getElementById('app')
 );

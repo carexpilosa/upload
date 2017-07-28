@@ -1,12 +1,14 @@
 'use strict';
 
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import store from '../store';
-import { updateSelectorFiltered1 } from '../actions';
+import * as Actions from '../actions';
 
-const action = updateSelectorFiltered1([]);
-store.dispatch(action);
+//const action = updateSelectorFiltered1([]);
+//store.dispatch(action);
 
 class Selector extends Component {
   constructor(props) {
@@ -36,6 +38,7 @@ class Selector extends Component {
   }
 
   render() {
+    const { updateSelectorFiltered1 } = this.props;
     return (
       <form>
         <input type="search" list="Tiere" onChange={this.onChangeFunc}/>
@@ -63,9 +66,11 @@ class Selector extends Component {
   }
 
   onChangeFunc(e) {
+    const { updateSelectorFiltered1 } = this.props;
     let filtered1 = this.state.daten.Tiergruppen.filter(group => {
       return e.target.value === group.name;
     });
+    console.log(filtered1);
     if (filtered1.length) {
       //this.setState({filtered1: filtered1});
       updateSelectorFiltered1(filtered1);
@@ -82,4 +87,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default Selector;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Selector);
+
+//export default Selector;
