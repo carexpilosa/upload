@@ -41,6 +41,7 @@ class Selector extends Component {
   render() {
     const { updateSelectorFiltered1 } = this.props;
     const { removeSelectorFiltered1 } = this.props;
+    console.log('###render => ' + this.props.filtered1.length);
     return (
       <form>
         <input type="search" list="Tiere" onChange={this.onChangeFunc}/>
@@ -50,12 +51,12 @@ class Selector extends Component {
           })
         }</datalist>
           {
-            store.getState().filtered1.length
+            this.props.filtered1.length
               ? <span>
                    <input type="search" list="Filter1" />
                    <datalist id="Filter1">{
-                     store.getState().filtered1[0].items.map((item,idx) => {
-                       console.log(item);
+                     this.props.filtered1[0].items.map((item, idx) => {
+                       console.log(`### ${item}`);
                        return <option key={idx} value={item} />;
                      })
                    }</datalist>
@@ -74,12 +75,14 @@ class Selector extends Component {
     let filtered1 = this.state.daten.Tiergruppen.filter(group => {
       return e.target.value === group.name;
     });
-    console.log(this.props.filtered1);
+    //console.log(this.props.filtered1);
     if (filtered1.length) {
-      //this.setState({filtered1: filtered1});
+      console.log('filtered: ' + filtered1.length);
       updateSelectorFiltered1(filtered1);
     } else {
       //this.setState({filtered1: []});
+      console.log('filtered: ' + filtered1.length);
+      console.log('removeSelectorFiltered1');
       removeSelectorFiltered1();
     }
     console.log(store.getState());

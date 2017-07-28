@@ -6,6 +6,7 @@ export function changeSelectorFiltered1(state=[], action) {
     case UPDATE_SELECTOR_FILTERED1:
       return action.filtered1;
     case REMOVE_SELECTOR_FILTERED1:
+      console.log('return []');
       return [];
     default:
       return state;
