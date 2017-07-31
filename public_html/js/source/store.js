@@ -30,8 +30,11 @@ function getDaten() {
 export function changeSelectorFiltered1(state=[], action) {
   switch (action.type) {
     case UPDATE_SELECTOR_FILTERED1:
-      console.log(action.filtered1);
-      return action.filtered1;
+      if(!action.filtered1) {
+        return state;
+      } else {
+        return action.filtered1;
+      }
     case REMOVE_SELECTOR_FILTERED1:
       return [];
     default:

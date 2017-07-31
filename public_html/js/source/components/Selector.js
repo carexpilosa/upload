@@ -13,7 +13,6 @@ import * as Actions from '../actions';
 class Selector extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.onChangeFunc = this.onChangeFunc.bind(this);
   }
 
@@ -47,7 +46,7 @@ class Selector extends Component {
   onChangeFunc(e) {
     const { updateSelectorFiltered1, removeSelectorFiltered1, daten } = this.props;
     let filtered = [];
-    
+
     daten.Tiergruppen.map(group => {
       if (e.target.value === group.name) {
         group.items.map(function (item) {
@@ -55,11 +54,9 @@ class Selector extends Component {
         });
       }
     });
-    console.log(filtered);
     if (filtered.length) {
-      updateSelectorFiltered1(filtered);
+      store.dispatch(updateSelectorFiltered1(filtered));
     } else {
-      //this.setState({filtered1: []});
       removeSelectorFiltered1();
     }
   }
@@ -78,4 +75,3 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Selector);
 
-//export default Selector;
