@@ -13,40 +13,17 @@ import * as Actions from '../actions';
 class Selector extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      daten: {
-        Tiergruppen: [
-          { name: 'Käfer',
-            items: ['Bombardierkäfer', 'Marienkäfer', 'Weichkäfer', 'Schnellkäfer']
-          },
-          { name: 'Vögel',
-            items: ['Singvögel', 'Eulen', 'Spechte', 'Watvögel', 'Störche']
-          },
-          {
-            name: 'Schmetterlinge',
-            items: ['Tagfalter', 'Nachtfalter']
-          },
-          {
-            name: 'Krokodile',
-            items: ['Nilkrokodil', 'Flusskrokodil']
-          }
-        ]
-      },
-      filtered1: props.filtered1 || []
-    };
-    this.state.filtered1 = props.filtered1;
+    console.log(props);
     this.onChangeFunc = this.onChangeFunc.bind(this);
   }
 
   render() {
-    const { updateSelectorFiltered1 } = this.props;
-    const { removeSelectorFiltered1 } = this.props;
-    //console.log('###render => ' + this.props.filtered1.length);
+    const { updateSelectorFiltered1, removeSelectorFiltered1, daten } = this.props;
     return (
       <form>
         <input type="search" list="Tiere" onChange={this.onChangeFunc}/>
         <datalist id="Tiere">{
-          this.state.daten.Tiergruppen.map((group, idx) => {
+          daten.Tiergruppen.map((group, idx) => {
             return <option key={idx} value={group.name} />;
           })
         }</datalist>
@@ -55,8 +32,7 @@ class Selector extends Component {
               ? <span>
                    <input type="search" list="Filter1" />
                    <datalist id="Filter1">{
-                     this.props.filtered1[0].items.map((item, idx) => {
-                       console.log(`### ${item}`);
+                     this.props.filtered1.map((item, idx) => {
                        return <option key={idx} value={item} />;
                      })
                    }</datalist>
@@ -69,29 +45,30 @@ class Selector extends Component {
   }
 
   onChangeFunc(e) {
-    const { updateSelectorFiltered1 } = this.props;
-    const { removeSelectorFiltered1 } = this.props;
-    console.log(this.props.filtered1);
-    let filtered1 = this.state.daten.Tiergruppen.filter(group => {
-      return e.target.value === group.name;
+    const { updateSelectorFiltered1, removeSelectorFiltered1, daten } = this.props;
+    let filtered = [];
+    
+    daten.Tiergruppen.map(group => {
+      if (e.target.value === group.name) {
+        group.items.map(function (item) {
+          filtered.push(item);
+        });
+      }
     });
-    //console.log(this.props.filtered1);
-    if (filtered1.length) {
-      console.log('filtered: ' + filtered1.length);
-      updateSelectorFiltered1(filtered1);
+    console.log(filtered);
+    if (filtered.length) {
+      updateSelectorFiltered1(filtered);
     } else {
       //this.setState({filtered1: []});
-      console.log('filtered: ' + filtered1.length);
-      console.log('removeSelectorFiltered1');
       removeSelectorFiltered1();
     }
-    console.log(store.getState());
   }
 }
 
 function mapStateToProps(state) {
   return {
-    filtered1: state.filtered1
+    filtered1: state.filtered1,
+    daten: state.daten
   };
 }
 
