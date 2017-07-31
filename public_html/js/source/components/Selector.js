@@ -7,9 +7,6 @@ import { connect } from 'react-redux';
 import store from '../store';
 import * as Actions from '../actions';
 
-//const action = updateSelectorFiltered1([]);
-//store.dispatch(action);
-
 class Selector extends Component {
   constructor(props) {
     super(props);
@@ -45,17 +42,17 @@ class Selector extends Component {
 
   onChangeFunc(e) {
     const { updateSelectorFiltered1, removeSelectorFiltered1, daten } = this.props;
-    let filtered = [];
+    let filtered1 = [];
 
     daten.Tiergruppen.map(group => {
       if (e.target.value === group.name) {
         group.items.map(function (item) {
-          filtered.push(item);
+          filtered1.push(item);
         });
       }
     });
-    if (filtered.length) {
-      store.dispatch(updateSelectorFiltered1(filtered));
+    if (filtered1.length) {
+      updateSelectorFiltered1(filtered1);
     } else {
       removeSelectorFiltered1();
     }
