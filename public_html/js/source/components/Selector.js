@@ -41,7 +41,7 @@ class Selector extends Component {
   render() {
     const { updateSelectorFiltered1 } = this.props;
     const { removeSelectorFiltered1 } = this.props;
-    console.log('###render => ' + this.props.filtered1.length);
+    //console.log('###render => ' + this.props.filtered1.length);
     return (
       <form>
         <input type="search" list="Tiere" onChange={this.onChangeFunc}/>
