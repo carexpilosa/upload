@@ -1,2 +1,5 @@
-- A multi uploader react component
-- A list test component
+React components:
+
+- A multi uploader
+- A list test
+- A multi selector
